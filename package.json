@@ -6,15 +6,28 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "eslint": "node_modules/.bin/eslint src/",
+    "prettier": "prettier --write src/**/*.js",
+    "lint": "eslint --debug src/",
+"lint:write": "eslint --debug src/ --fix"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "express"
+  ],
+  "author": "Masha",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.1"
   }
 }
