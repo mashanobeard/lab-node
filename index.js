@@ -1,5 +1,3 @@
-
-
 import express from "express"
 
 const PORT = process.env.PORT || 4000;
@@ -13,12 +11,16 @@ app.get('/', (req,res) => {
         '<h1><a href="/api/greetings">Your name</a></h1>'
     )
  })
-app.get('/api/greetings', (req,res) => {
-   res.send('<h3> Hellooo  ' + req.query.name + "</h3>")
-//    if(!res.send){
-//      res.status(400).json( "incorrect")  
-//     }  
+
+ app.get('/api/greetings', (req,res) => {
+    if(req.query.name){
+        res.send('<h3> Hellooo  ' + req.query.name + "</h3>")  
+    } else {
+      res.status(418).json( "absence of parameter") 
+    }
  })
+    
+
 app.listen(PORT, () =>{
    console.log ('SERVER STARTED ON PORT ' + PORT)
 })
