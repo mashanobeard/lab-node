@@ -3,9 +3,10 @@ import router from './modules/notes/routes/index.js'
 import router1 from './modules/greeting/routes/index.js'
 import morgan from 'morgan'
 import mongoose from 'mongoose'
-
+import dotenv from 'dotenv'
+dotenv.config()
 const PORT = process.env.PORT || 4000
-const DB_URL = `mongodb+srv://username:user@cluster0.dncy9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+const DB_URL = process.env.DB_URL
 
 const app = express()
 app.use(express.json())
@@ -13,7 +14,7 @@ app.use(express.json())
 app.use('/api/notes', router)
 app.use('/api/greetings', router1)
 
-app.use(morgan('combined')) //logger
+app.use(morgan(process.env.LOG_LEVEL)) //logger
 
 async function startApp() {
   try {
