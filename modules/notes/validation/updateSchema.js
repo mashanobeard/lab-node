@@ -1,4 +1,4 @@
-import { checkSchema } from 'express-validator'
+import { checkSchema } from 'express-validator';
 
 const updateSchema = checkSchema({
   id: {
@@ -19,6 +19,6 @@ const updateSchema = checkSchema({
       options: { min: 3, max: 500 },
     },
   },
-})
+});
 
-export default updateSchema
+export default updateSchema;

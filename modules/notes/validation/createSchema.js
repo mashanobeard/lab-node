@@ -1,4 +1,4 @@
-import { checkSchema } from 'express-validator'
+import { checkSchema } from 'express-validator';
 
 const createSchema = checkSchema({
   title: {
@@ -13,6 +13,6 @@ const createSchema = checkSchema({
       options: { min: 3, max: 500 },
     },
   },
-})
+});
 
-export default createSchema
+export default createSchema;

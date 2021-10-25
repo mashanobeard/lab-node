@@ -1,7 +1,7 @@
-import express from 'express'
-import getName from '../controllers/getName.js'
-const router1 = express.Router()
+import express from 'express';
+import getName from '../controllers/getName.js';
+const router1 = express.Router();
 
-router1.get('/', getName)
+router1.get('/', getName);
 
-export default router1
+export default router1;

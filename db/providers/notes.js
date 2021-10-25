@@ -1,27 +1,37 @@
 //db calls
-import notesSchema from '../../modules/notes/models/notesSchema.js'
-import { postfixName } from '../../env.js'
-import dotenv from 'dotenv'
-dotenv.config()
-export const noteGet = async () => {
-  const noteFind = await notesSchema.find().limit().sort({ createdAt: 1 })
-  return noteFind
-}
+import notesSchema from '../../modules/notes/models/notesSchema.js';
+import { postfixName } from '../../env.js';
+import dotenv from 'dotenv';
+dotenv.config();
+export const getNote = async () => {
+  const noteFind = await notesSchema.find().limit().sort({ createdAt: 1 });
+  return noteFind;
+};
 
-export const noteCreate = async (newItem) => {
-  newItem.title = postfixName(newItem.title)
-  const noteSave = await notesSchema.create(newItem)
-  return noteSave
-}
+export const createNote = async (newNote) => {
+  newNote.title = postfixName(newNote.title);
+  const createdNote = await notesSchema.create(newNote);
+  return createdNote;
+};
 
-export const noteUpdate = async (_id, noteNew) => {
-  const noteUpd = await notesSchema.findByIdAndUpdate({ _id: _id }, noteNew, {
-    new: true,
-  })
-  return noteUpd
-}
+export const updateNote = async (_id, details) => {
+  const updatedNote = await notesSchema.findByIdAndUpdate(
+    { _id: _id },
+    details,
+    {
+      new: true,
+    }
+  );
+  return updatedNote;
+};
 
-export const noteDelete = async (id) => {
-  const noteDel = await notesSchema.findByIdAndDelete(id)
-  return noteDel
-}
+export const deleteNote = async (_id) => {
+  const deletedNote = await notesSchema.findByIdAndUpdate(
+    { _id: _id },
+    { $set: { isDeleted: true } },
+    {
+      new: true,
+    }
+  );
+  return deletedNote;
+};

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const notesSchema = new mongoose.Schema({
   title: {
@@ -17,6 +17,11 @@ const notesSchema = new mongoose.Schema({
     type: Date,
     default: new Date(),
   },
-})
+  isDeleted: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+});
 
-export default mongoose.model('notesSchema', notesSchema)
+export default mongoose.model('notesSchema', notesSchema);
